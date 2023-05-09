@@ -1,14 +1,10 @@
 #include <iostream>
-
 using namespace std;
-
 int LCS[1001][1001];
-
 int main()
 {
 	string A, B;
 	cin >> A >> B;
-
 	for (int i = 0; i < A.size(); i++)
 	{
 		for (int j = 0; j < B.size(); j++)
@@ -23,7 +19,6 @@ int main()
 			}
 		}
 	}
-
 	cout << LCS[A.size()][B.size()];
 	return 0;
 }
