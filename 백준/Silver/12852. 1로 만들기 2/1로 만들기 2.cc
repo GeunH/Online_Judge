@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int dp[1000000], first[1000000];
+int dp[1000000];
 
 int main()
 {
