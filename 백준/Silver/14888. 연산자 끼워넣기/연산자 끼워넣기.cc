@@ -2,11 +2,7 @@
 
 using namespace std;
 
-int N;
-int num[11];
-int sign[4];
-int now_sign[11];
-int sign_cnt = 0;
+int N, num[11], sign[4], now_sign[11], sign_cnt = 0;
 int max_num= -1000000000, min_num = 1000000000;
 
 void find_min(int cnt)
@@ -16,22 +12,10 @@ void find_min(int cnt)
 		int last = num[0];
 		for (int i = 0; i < cnt; i++)
 		{
-			if (now_sign[i] == 0)
-			{
-				last += num[i + 1];
-			}
-			else if (now_sign[i] == 1)
-			{
-				last -= num[i + 1];
-			}
-			else if (now_sign[i] == 2)
-			{
-				last *= num[i + 1];
-			}
-			else
-			{
-				last /= num[i + 1];
-			}
+			if (now_sign[i] == 0) last += num[i + 1];
+			else if (now_sign[i] == 1) last -= num[i + 1];
+			else if (now_sign[i] == 2) last *= num[i + 1];
+			else last /= num[i + 1];
 		}
 
 		if (last > max_num)max_num = last;
@@ -63,7 +47,6 @@ int main()
 	{
 		cin >> sign[i];
 	}
-
 
 	find_min(0);
 	cout << max_num << endl << min_num;
