@@ -41,18 +41,26 @@ public class Main {
 			}
 		}
 		
-		for(int cnt =0; cnt < R; cnt++) {
+		
 			int min = Math.min(N, M);
+			
 			for(int i=0; i< min/2; i++) {
-				moveSquare(i);
+				
+				int size = 2*(N-i*2)+2*(M-i*2)-4;
+			
+				for(int cnt =0; cnt < R%size; cnt++) {
+					moveSquare(i);
+				}
+				
 			}
-		}
+		StringBuilder sb = new StringBuilder("");
 		
 		for(int i=0; i <N ;i++) {
 			for(int j=0; j <M ;j++) {
-				System.out.print(map[i][j] + " ");
+				sb.append(map[i][j]).append(" ");
 			}
-			System.out.println();
+			sb.append('\n');
 		}
+		System.out.println(sb.toString());
 	}
 }
