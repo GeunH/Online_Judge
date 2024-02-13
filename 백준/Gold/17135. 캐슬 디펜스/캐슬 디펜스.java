@@ -38,22 +38,9 @@ public class Main {
     	}
     }
     
-    static void monsterMove() {
-    	for(int i= N-1; i>=0 ; i--) {
-    		for(int j=0; j< M; j++) {
-    			if(i ==0) {
-    				map[i][j] = 0;
-    			}
-    			else {
-    				map[i][j] = map[i-1][j];
-    				map[i-1][j] = 0;
-    			}
-    		}
-    	}
-    }
     
-    static boolean gameOver() {
-    	for(int i=0; i< N; i++) {
+    static boolean gameOver(int turn) {
+    	for(int i=0; i< N-1-turn; i++) {
     		for(int j=0; j< M; j++) {
     			if( map[i][j] == 1)return false;
     		}
@@ -61,12 +48,12 @@ public class Main {
     	return true;
     }
     
-    static int shootArrow() {
+    static int shootArrow(int turn) {
     	int cnt = 0;
     	List <Monster> target = new LinkedList<>();
     	for(int i=0; i< nums.length;i++) {
     		boolean [][] isVisit = new boolean[N][M];
-    		arrows.offer(new Arrow(N-1,nums[i],1));
+    		arrows.offer(new Arrow(N-1-turn,nums[i],1));
     		isVisit[N-1][nums[i]] = true;
     		while(!arrows.isEmpty()) {
     			Arrow arrow = arrows.poll();
@@ -102,10 +89,11 @@ public class Main {
     		map[monster.y][monster.x] = 1;
     	}
     	int gameScore =0;
+    	int turn = 0;
     	while(true) {
-    		gameScore += shootArrow();
-    		if(gameOver())break;
-    		monsterMove();
+    		gameScore += shootArrow(turn);
+    		if(gameOver(turn))break;
+    		turn++;
     	}
     	if(answer < gameScore)answer= gameScore;
     }
