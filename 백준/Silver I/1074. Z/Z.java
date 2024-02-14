@@ -34,10 +34,7 @@ public class Main {
         R = Integer.parseInt(st.nextToken());
         C = Integer.parseInt(st.nextToken());
         
-        int size = 1;
-        for(int i=0; i< N; i++) {
-        	size*=2;
-        }
+        int size = (int)Math.pow((double)2, (double)N);
         divCon(size,0,0,0);
     }
 }
