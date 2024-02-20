@@ -33,8 +33,6 @@ public class Main {
 	}
 	
 	static void union(int a, int b) {
-        a = find(a);
-        b = find(b);
         p[Math.max(a, b)] = Math.min(a, b);
     }
     public static void main(String args[]) throws Exception {
