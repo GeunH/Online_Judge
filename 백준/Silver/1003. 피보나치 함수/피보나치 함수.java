@@ -19,20 +19,17 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine(), " " );
 
 		int T = Integer.parseInt(st.nextToken());
-		
+		nums = new fibo[41];
+		nums[0] = new fibo(1,0);
+		nums[1] = new fibo(0,1);
+		for(int j= 2; j<= 40 ; j++ ) {
+			nums[j] = new fibo(nums[j-1].zeroCnt + nums[j-2].zeroCnt , nums[j-1].oneCnt + nums[j-2].oneCnt);
+			
+		}
+			
 		for(int i=0; i< T; i++) {
 			st = new StringTokenizer(br.readLine(), " " );
 			int N = Integer.parseInt(st.nextToken());
-			
-			nums = new fibo[N+1];
-			
-			nums[0] = new fibo(1,0);
-			
-			if ( N >= 1 )nums[1] = new fibo(0,1);
-			
-			for(int j = 2 ; j<= N; j++ ) {
-				nums[j] = new fibo(nums[j-1].zeroCnt + nums[j-2].zeroCnt , nums[j-1].oneCnt + nums[j-2].oneCnt);
-			}
 			System.out.println(nums[N].zeroCnt + " " + nums[N].oneCnt);
 		}
 		
