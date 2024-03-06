@@ -5,7 +5,6 @@ import java.io.*;
  minHeap에 중간값보다 작은 값들.
  maxHeap에 중간값보다 큰 값들.
  중간값 확인을 어떻게 할까??
- 
 */
 
 public class Main {
@@ -44,8 +43,8 @@ public class Main {
 		int T = Integer.parseInt(st.nextToken());
 		
 		for(int tc = 1; tc <= T; tc++) {
-			maxCnt = new TreeMap<>();
-			minCnt = new TreeMap<>();
+			maxCnt = new HashMap<>();
+			minCnt = new HashMap<>();
 			minheap = new PriorityQueue<>((o1,o2)->{
 				if( o1 > o2)return 1;
 				else if ( o1 == o2)return 0;
