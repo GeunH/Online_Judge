@@ -22,6 +22,7 @@ public class Main {
 	static void nQueen(int diagNum, int queenNum) {
 		boolean isFound = false;
 		if ( answer < queenNum)answer =queenNum;
+		if ( queenNum == 2*N-2)return;
 		if( diagNum == 2*N-1) {
 			return;
 		}
