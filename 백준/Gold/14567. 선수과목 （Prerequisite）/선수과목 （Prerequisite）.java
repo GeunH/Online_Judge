@@ -9,17 +9,17 @@ import java.util.StringTokenizer;
 public class Main {
 	static int N, M;
 	static List<Integer>[] tree;
-	static int[] indegree, res;
+	static int[] indegree;
 	public static void main(String[] args) throws Exception{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		StringBuilder sb = new StringBuilder();
 		
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		
 		tree = new ArrayList[N+1];
 		indegree = new int[N+1];
-		res = new int[N+1];
 		
 		for(int i=1;i<=N;i++) tree[i] = new ArrayList<>();
 		
@@ -35,7 +35,7 @@ public class Main {
 		for(int i=1;i<=N;i++) {
 			if(indegree[i]==0) {
 				q.add(new Node(i, 1));
-				res[i] = 1;
+				indegree[i] = 1;
 			}
 		}
 		
@@ -45,15 +45,15 @@ public class Main {
 			for(int c : tree[p.num]) {
 				indegree[c]--;
 				if(indegree[c]==0) {
-					res[c] = p.cnt+1;
-					q.add(new Node(c, res[c]));
+					indegree[c] = p.cnt+1;
+					q.add(new Node(c, indegree[c]));
 				}
 			}
 		}
 		
 		for(int i=1;i<=N;i++)
-			System.out.printf("%d ", res[i]);
-		System.out.println();
+			sb.append(indegree[i]).append(" ");
+		System.out.println(sb);
 	}
 	
 	static class Node{
