@@ -48,10 +48,12 @@ public class Main {
         	hi.remove(lines[cur].src);
             cur = prev[cur];
         }
-        System.out.println(N-len);
+        StringBuilder sb = new StringBuilder("");
+        sb.append(N-len);
         for( int a : hi) {
-        	System.out.println(a);
+        	sb.append("\n").append(a);
         }
+        System.out.println(sb.toString());
     }
 
     public static void main(String[] args) throws IOException {
